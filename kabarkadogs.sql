@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2024 at 07:22 PM
+-- Generation Time: May 01, 2024 at 04:07 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -95,6 +95,13 @@ CREATE TABLE `adoptions` (
   `user_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `adoptions`
+--
+
+INSERT INTO `adoptions` (`id`, `first_name`, `middle_name`, `last_name`, `age`, `email`, `phone`, `address`, `city`, `barangay`, `zip_code`, `outdoors_kept`, `petscompanion`, `petcompanion_other`, `medicines_and_vaccinations`, `personal_references`, `additional_information`, `agree_terms_and_conditions`, `status_id`, `created_date`, `image`, `animal_id`, `user_id`) VALUES
+(1, 'drtfhdfh', 'zdfh', 'rfherh', '43', 'kjsiervz18@gmail.com', '346346346346', 'erthsrthsrt', 'Tanza, Cavite', 'Bunga', '4108', 'dtyjdrty', 'Security', 'sdryjsryj', 'Yes', 'srjsryj', 'sdryjsryj', 'on', 3, '2024-04-29', '15738969f374e6ad49b86ec89c27f7f4.png', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -157,6 +164,13 @@ CREATE TABLE `animals` (
   `story_link` varchar(1024) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `animals`
+--
+
+INSERT INTO `animals` (`id`, `name`, `breed`, `sex`, `weight`, `color`, `mammal`, `age`, `picture`, `archive`, `created_at`, `rescued_location`, `rescued_date`, `story_link`) VALUES
+(1, 'Browny', 'ambot', 'male', '1lb', 'Brown', 'dog', '5months', 'dog6.jpg', 'no', '', 'Indang, Cavite, Buna Cerca', '2024-04-19', 'https://web.facebook.com/photo/?fbid=10232269780115013&set=gm.3585202981730825&idorvanity=1685547128363096');
+
 -- --------------------------------------------------------
 
 --
@@ -173,6 +187,14 @@ CREATE TABLE `bookings` (
   `message` varchar(255) NOT NULL,
   `status_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bookings`
+--
+
+INSERT INTO `bookings` (`id`, `name`, `email`, `phone_number`, `date_of_appointment`, `time`, `message`, `status_id`) VALUES
+(140, 'Jose Manuel', 'kjsiervz18@gmail.com', '', '2024-04-29', 'Breakfast', 'gusto ko mag adopt ng pet pang ulam', 2),
+(142, 'Xai Consuelo', 'consueloxai08@gmail.com', '', '2024-04-30', '08:30', 'I want to adopt a pet', 2);
 
 -- --------------------------------------------------------
 
@@ -193,7 +215,7 @@ CREATE TABLE `dcf` (
 --
 
 INSERT INTO `dcf` (`id`, `img`, `donate`, `costs`, `funding`) VALUES
-(1, 'dogs.png', 'ertuysertyhserthst', '', '');
+(1, 'dogs.png', 'ertuysertyhserthst', 'wsedgwertgwertw', 'ertWETwet');
 
 -- --------------------------------------------------------
 
@@ -222,6 +244,29 @@ CREATE TABLE `donations` (
   `date_of_donation` date NOT NULL,
   `amount` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `donation_how_can_we_help`
+--
+
+CREATE TABLE `donation_how_can_we_help` (
+  `id` int(11) NOT NULL,
+  `img_1` varchar(255) NOT NULL,
+  `small_title` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `title_list` varchar(255) NOT NULL,
+  `img_2` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `donation_how_can_we_help`
+--
+
+INSERT INTO `donation_how_can_we_help` (`id`, `img_1`, `small_title`, `title`, `description`, `title_list`, `img_2`) VALUES
+(1, 'team2.jpg', 'hahaha DONATIONS', 'hahaha HOW CAN YOU HELP?', 'hahaha All of our initiatives, including the shelter, are entirely supported by donations. Any amount can be donated via Gcash or a bank deposit.\r\n\r\nThese contributions go a great way in meeting the needs of the animals in our shelter. The following is a list of supplies they require each day:', 'CATS & DOGS WISHLIST', 'team3.jpg');
 
 -- --------------------------------------------------------
 
@@ -298,7 +343,7 @@ CREATE TABLE `faqs` (
 --
 
 INSERT INTO `faqs` (`id`, `img`, `title`, `title_description`) VALUES
-(1, 'cat4.jpg', 'Adoption Feed', ' The adoption fee is P500 for cats and P1,000 for dogs. This should be paid when you pick up your new pet                                                        '),
+(1, 'cat4.jpg', 'Adoption Feed', 'The adoption fee is P500 for cats and P1,000 for dogs. This should be paid when you pick up your new pet .                                                                                                                                                                                                                             '),
 (2, '', 'Republic Act 1063.jpg', '');
 
 -- --------------------------------------------------------
@@ -336,31 +381,37 @@ CREATE TABLE `lists` (
   `description` varchar(1020) NOT NULL,
   `policy_id` varchar(11) NOT NULL,
   `adoption_fee_id` varchar(11) NOT NULL,
-  `about_our_pets_id` varchar(11) NOT NULL
+  `about_our_pets_id` varchar(11) NOT NULL,
+  `how_can_we_help_id` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `lists`
 --
 
-INSERT INTO `lists` (`id`, `description`, `policy_id`, `adoption_fee_id`, `about_our_pets_id`) VALUES
-(7, ' 1. Ang puppy/dog ay panitilihing nasa loob ng bakuran at hindi hahayaang makalabas.', '1', '0', ''),
-(9, ' 2. Kumpletuhin ang 5-in-1 vaccine at antirabies, iaupdate yearly.', '1', '0', ''),
-(15, '3. Ipagamot sa vet kapag nagsakit', '1', '0', ''),
-(18, ' 6. Hindi pwede isurrender sa pound.', '1', '0', ''),
-(19, '  7. Ipapakapon sa tamang edad.', '1', '0', ''),
-(20, '8. Magpapadala ng updated picture and video monthly', '1', '0', ''),
-(21, ' 9. Pwede namin bisitahin anytime', '1', '0', ''),
-(22, ' 10. Mamahalin at aalagaan mabuti na para bang sariling anak ang iaadopt na puppy/dog', '1', '0', ''),
-(24, '11. lydfliyflyidfl8yfkgcfkhfku', '1', '0', ''),
-(30, ' 1. Freedom from hunger or thirst', '8', '0', ''),
-(32, '3. Freedom from pain, injury and disease', '8', '0', ''),
-(33, ' 4. Freedom to express normal behavior', '8', '0', ''),
-(34, '5. Freedom from fear and distress', '8', '0', ''),
-(48, 'When you adopt a pet from us, you can be sure that they are:', '', '1', ''),
-(49, '1) up               to date on vaccinations', '', '1', ''),
-(50, '2) treated for ticks and fleas, and', '', '1', ''),
-(51, '3)               already spayed or neutered. All of this would cost between P5,000               to P10,000 at private vet clinics. Therefore, the adoption fee is               a very small amount to pay for ensuring that you are taking home a               healthy pet.', '', '1', '');
+INSERT INTO `lists` (`id`, `description`, `policy_id`, `adoption_fee_id`, `about_our_pets_id`, `how_can_we_help_id`) VALUES
+(7, ' 1. Ang puppy/dog ay panitilihing nasa loob ng bakuran at hindi hahayaang makalabas.', '1', '0', '', ''),
+(9, ' 2. Kumpletuhin ang 5-in-1 vaccine at antirabies, iaupdate yearly.', '1', '0', '', ''),
+(15, '3. Ipagamot sa vet kapag nagsakit', '1', '0', '', ''),
+(18, ' 6. Hindi pwede isurrender sa pound.', '1', '0', '', ''),
+(19, '  7. Ipapakapon sa tamang edad.', '1', '0', '', ''),
+(20, '8. Magpapadala ng updated picture and video monthly', '1', '0', '', ''),
+(21, ' 9. Pwede namin bisitahin anytime', '1', '0', '', ''),
+(22, ' 10. Mamahalin at aalagaan mabuti na para bang sariling anak ang iaadopt na puppy/dog', '1', '0', '', ''),
+(24, '11. lydfliyflyidfl8yfkgcfkhfku', '1', '0', '', ''),
+(30, ' 1. Freedom from hunger or thirst', '8', '0', '', ''),
+(32, '3. Freedom from pain, injury and disease', '8', '0', '', ''),
+(33, ' 4. Freedom to express normal behavior', '8', '0', '', ''),
+(34, '5. Freedom from fear and distress', '8', '0', '', ''),
+(48, 'When you adopt a pet from us, you can be sure that they are:', '', '1', '', ''),
+(49, '1) up               to date on vaccinations', '', '1', '', ''),
+(50, '2) treated for ticks and fleas, and', '', '1', '', ''),
+(51, '3)               already spayed or neutered. All of this would cost between P5,000               to P10,000 at private vet clinics. Therefore, the adoption fee is               a very small amount to pay for ensuring that you are taking home a               healthy pet.', '', '1', '', ''),
+(52, '4.sdkvlksdv', '', '1', '', ''),
+(56, 'Dog Food (Kibble and canned)', '', '', '', '1'),
+(57, 'Cat Food (Kibble and canned)', '', '', '', '1'),
+(58, 'Crates, Carriers or Cages', '', '', '', '1'),
+(59, 'Pet diapers and Wee wee pads', '', '', '', '1');
 
 -- --------------------------------------------------------
 
@@ -376,6 +427,103 @@ CREATE TABLE `notifications` (
   `is_read` int(11) NOT NULL,
   `created_at` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `user_id`, `title`, `description`, `is_read`, `created_at`) VALUES
+(1, 1, 'Pet Adoption', 'you successfully adapt a pet', 0, '2024-04-29'),
+(2, 1, 'Adoption Status', 'your adoption status changed to Failed', 0, '2024-04-29'),
+(3, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(4, 1, 'Adoption Status', 'your adoption status changed to Failed', 0, '2024-04-29'),
+(5, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(6, 1, 'Adoption Status', 'your adoption status changed to Failed', 0, '2024-04-29'),
+(7, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-29'),
+(8, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-29'),
+(9, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(10, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-29'),
+(11, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-29'),
+(12, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(13, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-29'),
+(14, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(15, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-29'),
+(16, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(17, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-29'),
+(18, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-29'),
+(19, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-29'),
+(20, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-29'),
+(21, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(22, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-29'),
+(23, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(24, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-29'),
+(25, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(26, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-29'),
+(27, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-29'),
+(28, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(29, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-29'),
+(30, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(31, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-29'),
+(32, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-29'),
+(33, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(34, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(35, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(36, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(37, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(38, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(39, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(40, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(41, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(42, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(43, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(44, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(45, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(46, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(47, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(48, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(49, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(50, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(51, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(52, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(53, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(54, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(55, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(56, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(57, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(58, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(59, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(60, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(61, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(62, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(63, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(64, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(65, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(66, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(67, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(68, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(69, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(70, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(71, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(72, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(73, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(74, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(75, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(76, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(77, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(78, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(79, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(80, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(81, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(82, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(83, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(84, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(85, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(86, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(87, 1, 'Adoption Status', 'your adoption status changed to Pending', 0, '2024-04-30'),
+(88, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(89, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30'),
+(90, 1, 'Adoption Status', 'your adoption status changed to Approved', 0, '2024-04-30'),
+(91, 1, 'Adoption Status', 'your adoption status changed to ', 0, '2024-04-30');
 
 -- --------------------------------------------------------
 
@@ -493,7 +641,7 @@ CREATE TABLE `statuses` (
 INSERT INTO `statuses` (`id`, `name`, `created_at`) VALUES
 (1, 'Pending', ''),
 (2, 'Approved', ''),
-(4, 'Failed', '');
+(3, 'Failed', '');
 
 -- --------------------------------------------------------
 
@@ -514,6 +662,13 @@ CREATE TABLE `users` (
   `sec_3` varchar(255) NOT NULL,
   `ans_3` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `user_role_id`, `email`, `sec_1`, `ans_1`, `sec_2`, `ans_2`, `sec_3`, `ans_3`) VALUES
+(1, 'user', 'user123', 2, 'user@gmail.com', 'secq1a', 'whitey', 'secq1b', 'nenita', 'secq3c', '8');
 
 -- --------------------------------------------------------
 
@@ -596,6 +751,12 @@ ALTER TABLE `deceased`
 -- Indexes for table `donations`
 --
 ALTER TABLE `donations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `donation_how_can_we_help`
+--
+ALTER TABLE `donation_how_can_we_help`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -696,7 +857,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `adoptions`
 --
 ALTER TABLE `adoptions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `adoption_fee`
@@ -714,13 +875,13 @@ ALTER TABLE `adoption_stories_settings`
 -- AUTO_INCREMENT for table `animals`
 --
 ALTER TABLE `animals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `dcf`
@@ -739,6 +900,12 @@ ALTER TABLE `deceased`
 --
 ALTER TABLE `donations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `donation_how_can_we_help`
+--
+ALTER TABLE `donation_how_can_we_help`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `donation_setting`
@@ -768,13 +935,13 @@ ALTER TABLE `home_carousel`
 -- AUTO_INCREMENT for table `lists`
 --
 ALTER TABLE `lists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `policy`
@@ -810,7 +977,7 @@ ALTER TABLE `statuses`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_roles`
