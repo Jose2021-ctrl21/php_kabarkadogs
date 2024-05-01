@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand", sans-serif;
+}
+body {
+  /* background: #f1eada; */
+  background: url('../images/body-back7.png');
+  background-size: contain;
+}
+:root {
+  --bd-kabarkadogs: #734900;
+  --bd-kabarkadogs-rgb: 115, 73, 0;
+  --bd-kabarkadogs-bg: #734900;
+  /* --bd-kabarkadogs: #734900;
+  --bd-kabarkadogs-rgb: 115, 73, 0;
+  --bd-kabarkadogs-bg: #734900; */
+}
+.btn-kabarkadogs {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-kabarkadogs-bg);
+  --bs-btn-border-color: var(--bd-kabarkadogs-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: rgba(var(--bd-kabarkadogs-rgb), 0.9);
+  --bs-btn-hover-border-color: rgba(var(--bd-kabarkadogs-rgb), 0.9);
+  --bs-btn-focus-shadow-rgb: var(--bd-kabarkadogs-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: rgba(var(--bd-kabarkadogs-rgb), 0.8);
+  --bs-btn-active-border-color: rgba(var(--bd-kabarkadogs-rgb), 0.8);
+}
+.btn-outline-kabarkadogs {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: #734900;
+  --bs-btn-bg: transparent; /* Transparent background for outline button */
+  --bs-btn-border-color: #734900; /* Custom outline color #734900 */
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #734910; /* 10% darker version of #734900 */
+  --bs-btn-hover-border-color: #734910; /* 10% darker version of #734900 */
+  --bs-btn-focus-shadow-rgb: #734900; /* Custom outline color #734900 */
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #734920; /* 20% darker version of #734900 */
+  --bs-btn-active-border-color: #734920; /* 20% darker version of #734900 */
+}
+#navbar {
+  /* height: 90px; */
+  background: #f5f5dc;
+  /* transition: height 0.3s; */
+}
+.nav-link {
+  color: var(--bd-kabarkadogs-bg);
+}
+.nav-item.p-2 .nav-link {
+  color: var(--bd-kabarkadogs-bg);
+  font-size: 1.5rem !important;
+}
+.nav-item{
+  transition: background 0.3s ease-in;
+ }
+ 
+.nav-item .nav-link:hover{
+ color: #fdbe33 !important;
+}
+
+/* .carousel-caption{
+  margin-bottom:120px !important;
+} */
+.color-kabarkadogs {
+  color: var(--bd-kabarkadogs-bg);
+}
+.color-kabarkadogs-gold {
+  color: #fdbe33;
+}
+#navbar .navbar-brand,
+.dropdown-item {
+  color: var(--bd-kabarkadogs-bg);
+}
+/* #navbar .navbar-brand {
+  margin: 0;
+  font-size: 25px;
+  line-height: 0px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+} */
+#navbar .navbar-collapse {
+  z-index: 10;
+  background: #f5f5dc;
+  border-radius: 20px;
+  /* padding: 20px; */
+}
+#navbar .nav-link {
+  font-size: 18px;
+}
+#navbar .nav-link,
+.dropdown-item:hover{
+  color: #5b3a01;
+}
+
+.bg-kabarkadogs-2 {
+  background: #f5f5dc transparent;
+  /* background: #f5f5dc !important; */
+}
+.bg-kabarkadogs {
+  background: transparent;
+  /* background: #f5e2bd; */
+}
+.section-padding-top {
+  padding-top: 100px;
+}
+#scrollToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  background-color: var(--bd-kabarkadogs-bg);
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+#scrollToTopBtn:hover {
+  background-color: #5b3a01;
+}
+.hero-title::after {
+  position: absolute;
+  content: "";
+  width: 100px;
+  height: 3px;
+  left: calc(50% - 50px);
+  bottom: -20px;
+  background: #734900;
+}
+.nav-link.active {
+  color: var(--bd-kabarkadogs-bg) !important;
+  font-weight: bold;
+}
+/* FLIP CARD */
+  /* Flip card container */
+  .flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 350px; /* Adjust as needed */
+    perspective: 1000px; /* Add 3D effect */
+}
+
+/* Flip card inner container for animation */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Flip card front side (initial state) */
+.flip-card-back{padding:1rem}
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide back side */
+    color:white;
+}
+
+.flip-card-back .card-body,
+.flip-card-back .card-body p,
+.flip-card-back .card-footer {
+    position: relative; /* Ensure content is stacked on top of the background */
+    z-index: 1; /* Ensure content is above the background */
+    color:white !important;
+}
+.flip-card-back .back{
+  background:#000;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+/* Style for front side (image) */
+.flip-card-front {
+    z-index: 1;
+}
+
+/* Style for back side (information) */
+.flip-card-back {
+    background-color: #f7f7f7; /* Change background color as needed */
+    color: #333; /* Change text color as needed */
+    transform: rotateY(180deg); /* Initially hidden by flipping */
+}
+
+/* Show back side on hover */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* PROFILE CARD */
+.profile-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  position:relative;
+  padding:0 !important;
+  background:#f1eada
+}
+
+.profile-card .footer{
+  margin: 24px 0;
+  background:#000;
+  margin-bottom:0;
+  padding:10px 0
+}
+.profile-card img{
+  width:100%
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+/* .profile-card button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+} */
+
+.profile-card div a{
+  text-decoration: none;
+  font-size: 22px;
+  color: white;
+}
+
+button:hover, .profile-card div a:hover {
+  opacity: 0.7;
+}

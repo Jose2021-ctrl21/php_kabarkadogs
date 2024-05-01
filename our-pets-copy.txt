@@ -1,0 +1,156 @@
+<?php 
+session_start();
+require('./php/connect.php');
+
+$searchName = '';
+
+if(isset($_GET['pets'])){
+    $searchName = $_GET['pets'];
+}
+
+$sql = "SELECT animals.*
+FROM animals
+LEFT JOIN adoptions ON animals.id = adoptions.animal_id
+LEFT JOIN deceased ON animals.id = deceased.animal_id
+WHERE deceased.animal_id IS NULL
+AND animals.mammal LIKE '%$searchName%'
+AND (adoptions.id IS NULL OR adoptions.status_id = 4);";
+
+
+$result = mysqli_query($conn, $sql);
+$data = [];
+
+if ($result) {
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
+        }
+    }
+} else {
+    echo "Error executing the query: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+
+?>
+<?php require('./layout/header.php') ?>
+
+    <div class="container">
+      <div class="p-5 text-center rounded-3 mt-5">
+        <h1
+          class="color-kabarkadogs fw-bold hero-title position-relative display-3"
+        >
+          Our Pets
+        </h1>
+        <hr class="featurette-divider" />
+      </div>
+    </div>
+
+    <div class="bg-kabarkadogs marketing mb-5 pb-5">
+      <div class="container">
+        <form method="get">
+          <div class="row mb-4">
+            <div class="col-4">
+              <button class="btn btn-kabarkadogs w-100" value="" name="pets">All Pets</button>
+            </div>
+            <div class="col-4">
+              <button class="btn btn-kabarkadogs w-100" value="dog" name="pets">Dogs</button>
+            </div>
+            <div class="col-4">
+              <button class="btn btn-kabarkadogs w-100" value="cat" name="pets">Cats</button>
+            </div>
+          </div>
+        </form>
+        <div class="row row-cols-2 row-cols-md-5 g-4">
+        <?php foreach ($data as $row): ?>
+          <div class="col">
+            <div class="card h-100">
+              <img src="uploads/<?php echo $row['picture']; ?>" class="card-img-top" alt="..." height="350">
+              <div class="card-body color-kabarkadogs">
+                <h5 class="card-title"><span class="fw-semibold">Name:</span> <?php echo $row['name']; ?></h5>
+                <p class="card-text"><span class="fw-semibold">Breed:</span> <?php echo $row['breed']; ?><br/>
+                <span class="fw-semibold">Sex:</span> <?php echo $row['sex']; ?><br/>
+                <span class="fw-semibold">Weight:</span> <?php echo $row['weight']; ?><br/>
+                <span class="fw-semibold">Color:</span> <?php echo $row['color']; ?><br/>
+                <span class="fw-semibold">Mammal:</span> <?php echo $row['mammal']; ?><br/>
+                <span class="fw-semibold">Age:</span> <?php echo $row['age']; ?><br/>
+                </p>
+                <p class="color-kabarkadogs">
+                  <span class="fw-semibold">Rescue Location: </span> <?php echo $row['rescued_location']; ?><br>
+                  <span class="fw-semibold">Rescue Date: </span> <?php echo $row['rescued_date']; ?><br>
+                  <span class="fw-semibold">Read story here: </span> 
+                  <a href="https://www.facebook.com/TheKabarkaDogs/posts/pfbid02jQTtoD4fZsGko3FRq22fcQFL9RR77zyUHELWyUZx2jwump4UDgiUa5LQvtMi3egnl">Click Here</a>
+                </p>
+              </div>
+              <div class="card-footer">
+              <a href="application-form.php?pet=<?php echo $row['id']; ?>" class="btn btn-kabarkadogs w-100">Adopt</a>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+        </div>
+      </div>
+    </div>
+    <div class="bg-kabarkadogs-2 marketing section-padding-top">
+      <div class="container">
+        <div class="row featurette">
+          <div class="col-md-5">
+            <h2 class="featurette-heading fw-normal lh-1 color-kabarkadogs">
+              About our pets
+            </h2>
+            <p class="lead color-kabarkadogs pt-5">
+              Before we put our rescued dogs or cats up for adoption, we make
+              sure they are free of any diseases since they were once abused,
+              abandoned, or stray animals on the road. They will be treated as
+              members of the family and given a new chance at life and genuine
+              love.
+            </p>
+          </div>
+          <div class="col-md-7 d-flex justify-content-end">
+            <img
+              src="assets/images/pets.jpg"
+              alt="gcash"
+              class="img-fluid rounded"
+              width="600"
+            />
+          </div>
+          <hr class="featurette-divider" />
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-kabarkadogs marketing section-padding-top">
+      <div class="container">
+        <div class="row featurette">
+          <div class="col-md-5">
+            <h2 class="featurette-heading fw-normal lh-1 color-kabarkadogs">
+              Adoption Fee
+            </h2>
+            <p class="lead color-kabarkadogs pt-5">
+              The adoption fee is P500 for cats and P1,000 for dogs. This should
+              be paid when you pick up your new pet
+            </p>
+            <h4 class="mt-5 pt-5">Why is there an adoption fee?</h4>
+            <p class="text-secondary lead pt-2 fst-italic">
+              When you adopt a pet from us, you can be sure that they are 1) up
+              to date on vaccinations, 2) treated for ticks and fleas, and 3)
+              already spayed or neutered. All of this would cost between P5,000
+              to P10,000 at private vet clinics. Therefore, the adoption fee is
+              a very small amount to pay for ensuring that you are taking home a
+              healthy pet.
+            </p>
+          </div>
+          <div class="col-md-7 d-flex justify-content-end">
+            <img
+              src="assets/images/pets2.jpg"
+              alt="gcash"
+              class="img-fluid rounded"
+              width="600"
+            />
+          </div>
+          <hr class="featurette-divider" />
+        </div>
+      </div>
+    </div>
+
+<?php require('./layout/footer.php')?>
